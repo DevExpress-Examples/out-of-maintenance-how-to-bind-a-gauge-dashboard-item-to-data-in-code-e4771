@@ -5,9 +5,4 @@
 <!-- default file list end -->
 # How to bind a Gauge dashboard item to data in code
 
-
-<p>The following example demonstrates how to bind a <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument15264">Gauge dashboard item</a> to data in code.</p>
-
-<br/>
-
-
+The following example shows how to bind a [Gauge dashboard item](http://docs.devexpress.com/Dashboard/15264) to data in code.
