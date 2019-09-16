@@ -1,50 +1,40 @@
 ﻿Imports System
 Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
-Imports DevExpress.DataAccess
 
 Namespace Dashboard_CreateGauges
-    Partial Public Class Form1
-        Inherits Form
+	Partial Public Class Form1
+		Inherits Form
 
-        Public Sub New()
-            InitializeComponent()
-        End Sub
-        Private Function CreateGauges(ByVal dataSource As DashboardObjectDataSource) As GaugeDashboardItem
+		Public Sub New()
+			InitializeComponent()
+		End Sub
+		Private Function CreateGauges(ByVal dataSource As DashboardObjectDataSource) As GaugeDashboardItem
 
-            ' Creates a gauge dashboard item and specifies its data source.
-            Dim gauges As New GaugeDashboardItem()
-            gauges.DataSource = dataSource
+			Dim gauges As New GaugeDashboardItem()
+			gauges.ViewType = GaugeViewType.CircularHalf
+			gauges.DataSource = dataSource
 
-            ' Creates the Gauge object with measures that provide data for calculating actual and target
-            ' values, and then adds this object to the Gauges collection of the gauge dashboard item.
-            Dim gauge As New Gauge()
-            gauge.ActualValue = New Measure("Extended Price", SummaryType.Average)
-            gauge.TargetValue = New Measure("Extended Price", SummaryType.Max)
-            gauges.Gauges.Add(gauge)
+			Dim gauge As New Gauge()
+			gauge.ActualValue = New Measure("Extended Price", SummaryType.Sum)
+			gauges.Gauges.Add(gauge)
 
-            ' Specifies the dimension that provides data for a gauge dashboard item series.
-            gauges.SeriesDimensions.Add(New Dimension("Sales Person"))
+			gauges.SeriesDimensions.Add(New Dimension("Sales Person"))
 
-            Return gauges
-        End Function
-        Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+			Return gauges
+		End Function
+		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-            ' Creates a dashboard and sets it as the currently opened dashboard in the dashboard viewer.
-            dashboardViewer1.Dashboard = New Dashboard()
+			dashboardViewer1.Dashboard = New Dashboard()
 
-            ' Creates a data source and adds it to the dashboard data source collection.
-            Dim dataSource As New DashboardObjectDataSource()
-            dataSource.DataSource = (New nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData()
-            dashboardViewer1.Dashboard.DataSources.Add(dataSource)
+			Dim dataSource As New DashboardObjectDataSource()
+			dataSource.DataSource = (New nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData()
+			dashboardViewer1.Dashboard.DataSources.Add(dataSource)
 
-            ' Creates a gauge dashboard item with the specified data source 
-            ' and adds it to the Items collection to display within the dashboard.
-            Dim gauges As GaugeDashboardItem = CreateGauges(dataSource)
-            dashboardViewer1.Dashboard.Items.Add(gauges)
+			Dim gauges As GaugeDashboardItem = CreateGauges(dataSource)
+			dashboardViewer1.Dashboard.Items.Add(gauges)
 
-            ' Reloads data in the data sources.
-            dashboardViewer1.ReloadData()
-        End Sub
-    End Class
+			dashboardViewer1.ReloadData()
+		End Sub
+	End Class
 End Namespace
