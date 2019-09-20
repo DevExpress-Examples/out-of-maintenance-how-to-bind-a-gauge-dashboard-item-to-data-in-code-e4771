@@ -3,7 +3,8 @@ using System.Windows.Forms;
 using DevExpress.DashboardCommon;
 
 namespace Dashboard_CreateGauges {
-    public partial class Form1 : Form {
+    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    {
         public Form1() {
             InitializeComponent();
         }
@@ -26,7 +27,9 @@ namespace Dashboard_CreateGauges {
             dashboardViewer1.Dashboard = new Dashboard();
 
             DashboardObjectDataSource dataSource = new DashboardObjectDataSource();
-            dataSource.DataSource = (new nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData();
+            dashboardViewer1.AsyncDataLoading+=(s,ev) => {
+                ev.Data = (new nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData();
+            };
             dashboardViewer1.Dashboard.DataSources.Add(dataSource);
 
             GaugeDashboardItem gauges = CreateGauges(dataSource);

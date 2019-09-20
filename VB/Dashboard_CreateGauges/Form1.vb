@@ -3,13 +3,13 @@ Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
 
 Namespace Dashboard_CreateGauges
-	Partial Public Class Form1
-		Inherits Form
+    Partial Public Class Form1
+        Inherits DevExpress.XtraEditors.XtraForm
 
-		Public Sub New()
-			InitializeComponent()
-		End Sub
-		Private Function CreateGauges(ByVal dataSource As DashboardObjectDataSource) As GaugeDashboardItem
+        Public Sub New()
+            InitializeComponent()
+        End Sub
+        Private Function CreateGauges(ByVal dataSource As DashboardObjectDataSource) As GaugeDashboardItem
 
 			Dim gauges As New GaugeDashboardItem()
 			gauges.ViewType = GaugeViewType.CircularHalf
@@ -28,7 +28,9 @@ Namespace Dashboard_CreateGauges
 			dashboardViewer1.Dashboard = New Dashboard()
 
 			Dim dataSource As New DashboardObjectDataSource()
-			dataSource.DataSource = (New nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData()
+			AddHandler dashboardViewer1.AsyncDataLoading, Sub(s,ev)
+				ev.Data = (New nwindDataSetTableAdapters.SalesPersonTableAdapter()).GetData()
+			End Sub
 			dashboardViewer1.Dashboard.DataSources.Add(dataSource)
 
 			Dim gauges As GaugeDashboardItem = CreateGauges(dataSource)

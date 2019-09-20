@@ -7,4 +7,5 @@
 
 The following example shows how to bind a [Gauge dashboard item](http://docs.devexpress.com/Dashboard/15264) to data in code.
 
-![](/images/screenshot.png)
+![screenshot](/images/screenshot.png)
+
