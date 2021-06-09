@@ -11,8 +11,8 @@ The following example shows how to bind a [Gauge dashboard item](http://docs.dev
 
 ## Documentation
 
+- [Binding to Data](https://docs.devexpress.com/Dashboard/116771) 
 - [Dashboard Items](https://docs.devexpress.com/Dashboard/116521)
-- [Card Dashboard Item](http://docs.devexpress.com/Dashboard/15263/)
 
 ## More Examples 
 
