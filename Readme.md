@@ -8,7 +8,7 @@
 
 * [Form1.cs](./CS/Dashboard_CreateGauges/Form1.cs) (VB: [Form1.vb](./VB/Dashboard_CreateGauges/Form1.vb))
 <!-- default file list end -->
-# How to Bind a Gauge Dashboard Item to Data at Runtime
+# Dashboard for WinForms - Bind a Gauge Dashboard Item to Data in code
 
 The following example shows how to bind a [Gauge dashboard item](http://docs.devexpress.com/Dashboard/15264) to data in code.
 
@@ -16,6 +16,8 @@ The following example shows how to bind a [Gauge dashboard item](http://docs.dev
 
 ## Documentation
 
+- [Gauge dashboard item](http://docs.devexpress.com/Dashboard/15264)
+- [Bind Gauge dashboard item to data](https://docs.devexpress.com/Dashboard/15382)
 - [Binding to Data](https://docs.devexpress.com/Dashboard/116771) 
 - [Dashboard Items](https://docs.devexpress.com/Dashboard/116521)
 
